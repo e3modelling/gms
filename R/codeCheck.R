@@ -131,7 +131,7 @@ codeCheck <- function(path = ".",
         }
       }
     if (!is.null(gams$not_used)) {
-      tmp <- grep("^VMV.*$", gams$not_used[, "name"], invert = TRUE)
+      tmp <- grep("_", gams$not_used[, "name"], invert = TRUE)
       if (length(tmp) > 0) {
         declarationNames <- gams$not_used[tmp, "name"]
         names(declarationNames) <- dimnames(gams$not_used)[[1]][tmp]
