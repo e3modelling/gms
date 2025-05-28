@@ -114,7 +114,7 @@ codeCheck <- function(path = ".",
     # for further information)
     # Remove objects which do not follow the naming conventions from the declarations set as
     # they would otherwise cause problems in what follows
-    tmp <- grep("^[VM]{2}.*$", gams$declarations[, "names"], invert = TRUE)
+    tmp <- grep("^VMV.*$", gams$declarations[, "names"], invert = TRUE)
     tmp <- tmp[gams$declarations[tmp, "type"] != "set"] # remove set entries from analysis
     if (length(tmp) > 0) {
       declarationNames <- gams$declarations[tmp, "names"]
