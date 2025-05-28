@@ -35,7 +35,7 @@ checkSwitchAppearance <- function(code){
   dimnames(a)[[2]] <- names(tmp)
   
   tmp <- dimnames(a)[[1]]
-  tmp2 <- grep("_",tmp,invert=TRUE)
+  tmp2 <- grep("VMV",tmp,invert=TRUE)
   tmp[tmp2] <- paste("_",tmp[tmp2],sep="")
   type <- sub("^(o|c|)[^_]*?(m|[0-9]{2}|)_.*$","\\1\\2",tmp)
   names(type) <- dimnames(a)[[1]]
