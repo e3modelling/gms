@@ -114,7 +114,7 @@ codeCheck <- function(path = ".",
     # for further information)
     # Remove objects which do not follow the naming conventions from the declarations set as
     # they would otherwise cause problems in what follows
-    tmp <- grep("^VMV.*$", gams$declarations[, "names"], invert = TRUE)
+    tmp <- grep("^[qvsfipoxcm]{1}[cqv]?(m|[0-9]{2}|)_", gams$declarations[, "names"], invert = TRUE)
     tmp <- tmp[gams$declarations[tmp, "type"] != "set"] # remove set entries from analysis
     if (length(tmp) > 0) {
       declarationNames <- gams$declarations[tmp, "names"]
@@ -131,7 +131,7 @@ codeCheck <- function(path = ".",
         }
       }
     if (!is.null(gams$not_used)) {
-      tmp <- grep("_", gams$not_used[, "name"], invert = TRUE)
+      tmp <- grep("^VMV.*$", gams$not_used[, "name"], invert = TRUE)
       if (length(tmp) > 0) {
         declarationNames <- gams$not_used[tmp, "name"]
         names(declarationNames) <- dimnames(gams$not_used)[[1]][tmp]
