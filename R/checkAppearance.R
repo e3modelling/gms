@@ -132,7 +132,7 @@ checkAppearance <- function(x, capitalExclusionList = NULL) {
   sets <- x$declarations[x$declarations[, "type"] == "set", "names"]
   aSets <- a[sets, , drop = FALSE]
   a <- a[!(rownames(a) %in% sets), , drop = FALSE]
-  type <- sub("^(o|)[^_]*?(m|[0-9]{2}|)_.*$", "\\1\\2", dimnames(a)[[1]])
+  type <- sub("VMV.*$", "m", dimnames(a)[[1]])
   names(type) <- dimnames(a)[[1]]
   return(list(appearance = a, setappearance = aSets, type = type, warnings = w))
 }
