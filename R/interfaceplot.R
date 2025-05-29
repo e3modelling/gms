@@ -462,7 +462,9 @@ interfaceplot <- function(x = ".",
   # Edge labels, only displayed if the graph isn't to full of nodes!
   if (!rlang::is_empty(lab_edges)) {
     if (num_nodes <= max_num_nodes_for_edge_labels) {
-      params$edge.labels <- lab_edges
+      vec <- unlist(strsplit(interface_info$items, " "))
+      vec <- unique(vec)
+      params$edge.labels <- paste(vec, collapse = "\n")
       # Change some default edge.label parameters, if not already given by ...
       if (!"edge.label.position" %in% names(params)) params$edge.label.position <- 0.4
       if (!"edge.label.margin" %in% names(params)) params$edge.label.margin <- 0.02
